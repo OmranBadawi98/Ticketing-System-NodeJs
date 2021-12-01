@@ -1,3 +1,5 @@
+var router = require('./index')
+
 const controller_Tickets = require('../controllers/tickets-controller')
 
 // Getting all

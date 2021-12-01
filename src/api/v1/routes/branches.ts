@@ -1,3 +1,5 @@
+var router = require('./index')
+
 const controller_Branches = require('../controllers/branches-controller')
 // Getting all
 router.get('/', controller_Branches.get_all_branches)

@@ -1,5 +1,3 @@
-import index from './index'
-
 router.get('/', (req, res, next) => {
   res.send('Welcome To Dashboard')
 })
@@ -18,4 +16,4 @@ router.get('/', (req, res, next) => {
 // // Deleting One
 // router.delete('/:id', controller.delete_one_branche)
 
-module.exports = router
+// module.exports = router

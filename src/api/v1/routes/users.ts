@@ -1,3 +1,5 @@
+var router = require('./index')
+
 const controller_Users = require('../controllers/users-controller')
 
 // Getting all
