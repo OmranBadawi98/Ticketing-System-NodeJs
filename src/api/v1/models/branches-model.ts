@@ -9,35 +9,35 @@ const branchesSchema = new mongooseBranch.Schema({
   },
   ip: {
     type: Number,
-    // required: true,
+    required: true,
   },
   count_pc: {
     type: Number,
-    // required: true,
+    required: true,
   },
   notice_printer: {
     type: Number,
-    // required: true,
+    required: true,
   },
   barcode: {
     type: Number,
-    // required: true,
+    required: true,
   },
   print_server_sader: {
     type: Number,
-    // required: true,
+    required: true,
   },
   print_server_wared: {
     type: Number,
-    // required: true,
+    required: true,
   },
   detail: {
     type: String,
-    // required: true,
+    required: true,
   },
   note: {
     type: String,
-    // required: true,
+    required: true,
   },
 })
 

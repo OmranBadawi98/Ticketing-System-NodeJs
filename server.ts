@@ -4,8 +4,17 @@ import express from 'express'
 import path from 'path'
 import cookieParser from 'cookie-parser'
 import logger from 'morgan'
-
-require('./src/api/v1/routes/index')(express)
+import bcrypt from 'bcrypt'
+import bodyParser from 'body-parser'
+// import mongoose from 'mongoose'
+// require('./src/api/v1/routes/index')(express)
+const indexRouter = require('./src/api/v1/routes/index')
+const usersRouter = require('./src/api/v1/routes/users')
+const ticketsRouter = require('./src/api/v1/routes/tickets')
+const branchesRouter = require('./src/api/v1/routes/branches')
+// const dashboardRouter = require('./src/api/v1/routes/dashboard')
+// const loginRouter = require('./src/api/v1/routes/login')
+// const registerRouter = require('./src/api/v1/routes/register')
 
 const app = express()
 
@@ -18,6 +27,15 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
+app.use(bodyParser.json())
+
+app.use('/', indexRouter)
+app.use('/users', usersRouter)
+app.use('/tickets', ticketsRouter)
+app.use('/branches', branchesRouter)
+// app.use('/dashboard', dashboardRouter)
+// app.use('/login', loginRouter)
+// app.use('/register', registerRouter)
 
 // Connect To DB
 const connectDB = require('./config/mongodb/connectdb')

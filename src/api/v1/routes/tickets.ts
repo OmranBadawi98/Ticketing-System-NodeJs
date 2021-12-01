@@ -1,5 +1,5 @@
-var router = require('./index')
-
+var express = require('express')
+var router = express.Router()
 const controller_Tickets = require('../controllers/tickets-controller')
 
 // Getting all

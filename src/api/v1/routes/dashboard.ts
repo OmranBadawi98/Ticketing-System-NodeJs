@@ -1,6 +1,6 @@
-router.get('/', (req, res, next) => {
-  res.send('Welcome To Dashboard')
-})
+// router.get('/', (req, res, next) => {
+//   res.send('Welcome To Dashboard')
+// })
 // // Getting all
 // router.get('/', controller.get_all_branches)
 

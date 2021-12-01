@@ -15,7 +15,7 @@ const get_all_branches = async (req, res) => {
 // GET One Branche
 const get_one_branche = async (req, res) => {
   try {
-    const checkingID = await new checkId().getSubs(req.params.id)
+    const checkingID = await new checkId().getId(req.params.id)
     if (checkingID == null) {
       return res.status(404).json({ message: 'error' })
     }
@@ -49,45 +49,47 @@ const create_one_branche = async (req, res) => {
 
 // UPDATE One Branche
 const update_one_branche = async (req, res) => {
-  if (req.body.name != null) {
-    res.branches.name = req.body.name
-  }
-  // if (req.body.ip != null) {
-  //   res.branches.ip = req.body.ip
-  // }
-  // if (req.body.count_pc != null) {
-  //   res.branches.count_pc = req.body.count_pc
-  // }
-  // if (req.body.notice_printer != null) {
-  //   res.branches.notice_printer = req.body.notice_printer
-  // }
-  // if (req.body.barcode != null) {
-  //   res.branches.barcode = req.body.barcode
-  // }
-  // if (req.body.print_server_sader != null) {
-  //   res.branches.print_server_sader = req.body.print_server_sader
-  // }
-  // if (req.body.print_server_wared != null) {
-  //   res.branches.print_server_wared = req.body.print_server_wared
-  // }
-  // if (req.body.detail != null) {
-  //   res.branches.detail = req.body.detail
-  // }
-  // if (req.body.note != null) {
-  //   res.branches.note = req.body.note
-  // }
   try {
-    const updatedBranche = await res.branches.save()
-    res.json(updatedBranche)
+    const checkingID = await new checkId().getId(req.params.id)
+    if (checkingID == null) {
+      return res.status(404).json({ message: 'error' })
+    }
+    const update = await Branches.updateOne(
+      {
+        _id: req.params.id,
+      },
+      {
+        $set: { name: req.body.name },
+      }
+    )
+    res.json(update)
   } catch (err) {
-    res.status(400).json({ message: err.message })
+    res.json({ message: err.message })
   }
+  // try {
+  //   const checkingID = await new checkId().getId(req.params.id)
+  //   if (checkingID == null) {
+  //     return res.status(404).json({ message: 'error' })
+  //   }
+  //   console.log(checkingID)
+  //   if (req.body.name != null) {
+  //     res. = req.body.name
+  //   }
+  //   console.log(res.checkingID.name)
+  //   console.log(res.Branches.name)
+  //   console.log(res.branche.name)
+
+  //   const updatedBranche = await res.checkingID.save()
+  //   res.json(updatedBranche)
+  // } catch (err) {
+  //   res.status(400).json({ message: "can't update" })
+  // }
 }
 
 // DELETE One Branche
 const delete_one_branche = async (req, res) => {
   try {
-    const checkingID = await new checkId().getSubs(req.params.id)
+    const checkingID = await new checkId().getId(req.params.id)
     if (checkingID == null) {
       return res.status(404).json({ message: 'error' })
     }
@@ -108,17 +110,17 @@ const delete_one_branche = async (req, res) => {
 // }
 
 class checkId {
-  public async getSubs(subId: string): Promise<Ibranches> {
-    let subscriber
+  public async getId(getId: string): Promise<Ibranches> {
+    let branche
     try {
-      subscriber = await Branches.findById(subId)
-      if (subscriber == null) {
+      branche = await Branches.findById(getId)
+      if (branche == null) {
         throw new errorGetIdException()
       }
     } catch (err) {
       throw err
     }
-    return subscriber
+    return branche
   }
 }
 

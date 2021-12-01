@@ -35,41 +35,42 @@ const create_one_ticket = async (req, res) => {
 }
 
 const update_one_ticket = async (req, res) => {
-  // if (req.body.name != null) {
-  //   res.branches.name = req.body.name
-  // }
-  // if (req.body.subscribedToChannel != null) {
-  //   res.subscriber.subscribedToChannel = req.body.subscribedToChannel
-  // }
-  // try {
-  //   const updatedSubscriber = await res.subscriber.save()
-  //   res.json(updatedSubscriber)
-  // } catch (err) {
-  //   res.status(400).json({ message: err.message })
-  // }
+  try {
+    // const checkingID = await new checkId().getId(req.params.id)
+    // if (checkingID == null) {
+    //   return res.status(404).json({ message: 'error' })
+    // }
+    const update = await Tickets.updateOne(
+      {
+        _id: req.params.id,
+      },
+      {
+        $set: {
+          description: req.body.description,
+          done: req.body.done,
+        },
+      }
+    )
+    res.json(update)
+  } catch (err) {
+    res.json({ message: err.message })
+  }
 }
 
 const delete_one_ticket = async (req, res) => {
-  // try {
-  //   const checkingID = await new checkId().getSubs(req.params.id)
-  //   if (checkingID == null) {
-  //     return res.status(404).json({ message: 'error' })
-  //   }
-  //   const resault = await checkingID.remove()
-  //   res.json(resault)
-  // } catch (err) {
-  //   res.json({ message: err.message })
-  // }
+  try {
+    // const checkingID = await new checkId().getId(req.params.id)
+    // if (checkingID == null) {
+    //   return res.status(404).json({ message: 'error' })
+    // }
+    const deleted = await Tickets.remove({
+      _id: req.params.id,
+    })
+    res.json(deleted)
+  } catch (err) {
+    res.json({ message: err.message })
+  }
 }
-
-// class errorGetIdException {
-//   errorCode: string
-//   message: string
-//   constructor() {
-//     this.errorCode = 'noId001'
-//     this.message = 'Cannot find subscriber'
-//   }
-// }
 
 // class checkId {
 //   public async getSubs(subId: string): Promise<any> {

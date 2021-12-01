@@ -3,7 +3,7 @@ class errorGetIdException {
   message: string
   constructor() {
     this.errorCode = 'NuId001'
-    this.message = 'Cannot find subscriber'
+    this.message = 'Cannot find ID'
   }
 }
 module.exports = errorGetIdException
