@@ -1,7 +1,5 @@
-var express = require('express')
-var router = express.Router()
+import index from './index'
 
-/* GET dashboard page. */
 router.get('/', (req, res, next) => {
   res.send('Welcome To Dashboard')
 })

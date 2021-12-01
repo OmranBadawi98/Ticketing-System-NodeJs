@@ -1,6 +1,3 @@
-var express = require('express')
-var router = express.Router()
-
 /* GET branches page. */
 // router.get('/', (req, res, next) => {
 //   res.send('Welcome to branches')

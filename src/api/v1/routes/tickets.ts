@@ -1,5 +1,3 @@
-var express = require('express')
-var router = express.Router()
 // import Controller from '../controllers/branches-controller'
 const controller_Tickets = require('../controllers/tickets-controller')
 

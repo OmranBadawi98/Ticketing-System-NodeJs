@@ -1,5 +1,3 @@
-var express = require('express')
-var router = express.Router()
 const controller_Users = require('../controllers/users-controller')
 
 // Getting all
