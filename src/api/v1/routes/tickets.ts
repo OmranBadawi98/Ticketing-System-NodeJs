@@ -1,4 +1,3 @@
-// import Controller from '../controllers/branches-controller'
 const controller_Tickets = require('../controllers/tickets-controller')
 
 // Getting all
