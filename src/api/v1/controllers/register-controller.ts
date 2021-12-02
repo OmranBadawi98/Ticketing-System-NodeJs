@@ -1,4 +1,4 @@
-const Users = require('../models/users-model')
+import Users from '../models/users-model'
 import bcrypt from 'bcrypt'
 
 // Create New User in DB

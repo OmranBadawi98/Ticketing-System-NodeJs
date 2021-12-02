@@ -4,17 +4,10 @@ import express from 'express'
 import path from 'path'
 import cookieParser from 'cookie-parser'
 import logger from 'morgan'
-import bcrypt from 'bcrypt'
 import bodyParser from 'body-parser'
-// import mongoose from 'mongoose'
-// require('./src/api/v1/routes/index')(express)
-const indexRouter = require('./src/api/v1/routes/index')
-const usersRouter = require('./src/api/v1/routes/users')
-const ticketsRouter = require('./src/api/v1/routes/tickets')
-const branchesRouter = require('./src/api/v1/routes/branches')
-// const dashboardRouter = require('./src/api/v1/routes/dashboard')
-const loginRouter = require('./src/api/v1/routes/login')
-const registerRouter = require('./src/api/v1/routes/register')
+import { registerRoute } from './config/router/routers'
+// Connect To DB
+import connectDB from './config/mongodb/connectdb'
 
 const app = express()
 
@@ -29,16 +22,8 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(bodyParser.json())
 
-app.use('/', indexRouter)
-app.use('/users', usersRouter)
-app.use('/tickets', ticketsRouter)
-app.use('/branches', branchesRouter)
-// app.use('/dashboard', dashboardRouter)
-app.use('/login', loginRouter)
-app.use('/register', registerRouter)
-
-// Connect To DB
-const connectDB = require('./config/mongodb/connectdb')
+// Function to Get All Routes
+registerRoute(app)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

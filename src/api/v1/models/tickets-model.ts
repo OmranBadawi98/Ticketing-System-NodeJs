@@ -1,6 +1,6 @@
-const mongooseTicket = require('mongoose')
+import { Itickets } from './../interfaces/interfaces'
+import mongooseTicket from 'mongoose'
 import { model, Model } from 'mongoose'
-import { Itickets } from '../interfaces/interfaces'
 
 const ticketsSchema = new mongooseTicket.Schema({
   issue: {

@@ -1,5 +1,4 @@
-const Users = require('../models/users-model')
-
+import Users from '../models/users-model'
 const get_all_users = async (req, res) => {
   try {
     const users = await Users.find()

@@ -1,8 +1,8 @@
-// router.get('/', (req, res, next) => {
-//   res.send('Welcome To Dashboard')
-// })
-// // Getting all
-// router.get('/', controller.get_all_branches)
+import express from 'express'
+export var router = express.Router()
+import controller_dashboard from '../controllers/dashboard-controller'
+// Getting all
+router.get('/', controller_dashboard.get_dashboard)
 
 // // Getting One
 // router.get('/:id', controller.get_one_branche)
@@ -15,5 +15,3 @@
 
 // // Deleting One
 // router.delete('/:id', controller.delete_one_branche)
-
-// module.exports = router

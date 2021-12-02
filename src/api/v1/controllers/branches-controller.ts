@@ -1,6 +1,6 @@
 import { Ibranches } from './../interfaces/interfaces'
-const Branches = require('../models/branches-model')
-const errorGetIdException = require('./errorHandling')
+import Branches from '../models/branches-model'
+import { errorGetIdException } from './errorHandling'
 
 // GET All Branches
 const get_all_branches = async (req, res) => {
@@ -28,8 +28,9 @@ const get_one_branche = async (req, res) => {
 
 // CREATE One Branche
 const create_one_branche = async (req, res) => {
+  const branche = req.body as Ibranches
   const branches = new Branches({
-    name: req.body.name,
+    name: branche.name,
     ip: req.body.ip,
     count_pc: req.body.count_pc,
     notice_printer: req.body.notice_printer,

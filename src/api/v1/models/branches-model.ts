@@ -1,8 +1,8 @@
-const mongooseBranch = require('mongoose')
+import mongoose from 'mongoose'
 import { model, Model } from 'mongoose'
 import { Ibranches } from '../interfaces/interfaces'
 
-const branchesSchema = new mongooseBranch.Schema({
+const branchesSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -41,49 +41,5 @@ const branchesSchema = new mongooseBranch.Schema({
   },
 })
 
-const Branch: Model<Ibranches> = model('Branches', branchesSchema)
-module.exports = Branch
-// module.exports = {
-//   branches,
-//   tickets,
-//   users,
-// }
-
-// const ticketsSchema = new mongoose.Schema({
-//   issue: {
-//     type: String,
-//     required: true,
-//   },
-//   from: {
-//     type: String,
-//     required: true,
-//   },
-//   to: {
-//     type: String,
-//     required: true,
-//   },
-//   description: {
-//     type: String,
-//     required: true,
-//   },
-//   done: {
-//     type: Boolean,
-//     // required: true,
-//   },
-// })
-
-// const usersSchema = new mongoose.Schema({
-//   name: {
-//     type: String,
-//     required: true,
-//   },
-//   password: {
-//     type: String,
-//     required: true,
-//   },
-// })
-
-// let branches = mongoose.model('Branches', branchesSchema)
-// let tickets = mongoose.model('Tickets', ticketsSchema)
-// let users = mongoose.model('Users', usersSchema)
-// module.exports = mongooseBranch.model('Branches', branchesSchema)
+const Branches: Model<Ibranches> = model('Branches', branchesSchema)
+module.exports = Branches

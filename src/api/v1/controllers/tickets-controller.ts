@@ -1,5 +1,4 @@
-const Tickets = require('../models/tickets-model')
-
+import Tickets from '../models/tickets-model'
 const get_all_tickets = async (req, res) => {
   try {
     const tickets = await Tickets.find()
