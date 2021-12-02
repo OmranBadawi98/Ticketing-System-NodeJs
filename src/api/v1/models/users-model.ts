@@ -5,11 +5,11 @@ import { Iusers } from '../interfaces/interfaces'
 const usersSchema = new mongooseUser.Schema({
   name: {
     type: String,
-    required: true,
+    // required: true,
   },
   password: {
     type: String,
-    required: true,
+    // required: true,
   },
 })
 const User: Model<Iusers> = model('Users', usersSchema)
