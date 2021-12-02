@@ -41,5 +41,7 @@ const branchesSchema = new mongoose.Schema({
   },
 })
 
-const Branches: Model<Ibranches> = model('Branches', branchesSchema)
-module.exports = Branches
+// export const Branch: Model<Ibranches> = model('Branches', branchesSchema)
+export var Branches = mongoose.model<Ibranches>('Branches', branchesSchema)
+
+// module.exports = Branches

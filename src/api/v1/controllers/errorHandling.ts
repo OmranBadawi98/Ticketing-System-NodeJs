@@ -1,4 +1,4 @@
-class errorGetIdException {
+export class errorGetIdException {
   errorCode: string
   message: string
   constructor() {
@@ -6,4 +6,4 @@ class errorGetIdException {
     this.message = 'Cannot find ID'
   }
 }
-module.exports = errorGetIdException
+// module.exports = errorGetIdException

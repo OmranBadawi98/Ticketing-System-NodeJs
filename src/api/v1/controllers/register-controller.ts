@@ -1,8 +1,8 @@
-import Users from '../models/users-model'
+import { Users } from '../models/users-model'
 import bcrypt from 'bcrypt'
 
 // Create New User in DB
-const create_newUser = async (req, res) => {
+export const create_newUser = async (req, res) => {
   try {
     const hashedPassword = await bcrypt.hash(req.body.password, 10)
     Users.find({ name: req.body.name })
@@ -25,6 +25,6 @@ const create_newUser = async (req, res) => {
     res.status(400).json({ message: err.message })
   }
 }
-module.exports = {
-  create_newUser,
-}
+// module.exports = {
+//   create_newUser,
+// }

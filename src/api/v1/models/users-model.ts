@@ -1,8 +1,8 @@
-import mongooseUser from 'mongoose'
+import mongoose from 'mongoose'
 import { model, Model } from 'mongoose'
 import { Iusers } from '../interfaces/interfaces'
 
-const usersSchema = new mongooseUser.Schema({
+const usersSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -12,5 +12,6 @@ const usersSchema = new mongooseUser.Schema({
     required: true,
   },
 })
-const User: Model<Iusers> = model('Users', usersSchema)
-module.exports = User
+// const User: Model<Iusers> = model('Users', usersSchema)
+// module.exports = User
+export var Users = mongoose.model<Iusers>('Users', usersSchema)

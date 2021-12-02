@@ -1,7 +1,4 @@
 // GET All
-const get_dashboard = async (req, res) => {
+export const get_dashboard = async (req, res) => {
   res.send('Wlecome To Dashboard')
-}
-module.exports = {
-  get_dashboard,
 }

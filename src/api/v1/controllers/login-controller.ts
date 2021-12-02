@@ -1,4 +1,4 @@
-import Users from '../models/users-model'
+import { Users } from '../models/users-model'
 import bcrypt from 'bcrypt'
 
 // GET Login Page
@@ -12,7 +12,7 @@ import bcrypt from 'bcrypt'
 // }
 
 // Check Credential User in DB
-const check_credential_user = async (req, res) => {
+export const check_credential_user = async (req, res) => {
   try {
     Users.find({ name: req.body.name })
       .exec()
@@ -34,47 +34,46 @@ const check_credential_user = async (req, res) => {
     console.log(err)
     res.status(500).json({ error: err })
   }
-
-  //--------------------------
-  const credential = await Users.find({
-    name: req.body.name,
-  })
-  if (credential == null) {
-    return res.status(400).send('Cannot Find User')
-  }
-  try {
-    const passwordMatch = await bcrypt.compare(
-      req.body.password,
-      credential[0].password,
-      (err) => {
-        console.log('whats up')
-        console.log(req.body.password)
-        console.log(credential.password)
-      }
-    )
-    if (passwordMatch) {
-      res.send('success')
-    } else {
-      res.send('Faild')
-    }
-    if (
-      await bcrypt.compare(
-        req.body.password,
-        credential.password,
-        (err, result) => {
-          result == true
-        }
-      )
-    ) {
-      res.send('success')
-    } else {
-      res.send('Faild')
-    }
-  } catch (err) {
-    res.status(500).json({ message: err.message })
-  }
 }
-
-module.exports = {
-  check_credential_user,
-}
+//--------------------------
+//   const credential = await Users.find({
+//     name: req.body.name,
+//   })
+//   if (credential == null) {
+//     return res.status(400).send('Cannot Find User')
+//   }
+//   try {
+//     const passwordMatch = await bcrypt.compare(
+//       req.body.password,
+//       credential[0].password,
+//       (err) => {
+//         console.log('whats up')
+//         console.log(req.body.password)
+//         console.log(credential.password)
+//       }
+//     )
+//     if (passwordMatch) {
+//       res.send('success')
+//     } else {
+//       res.send('Faild')
+//     }
+//     if (
+//       await bcrypt.compare(
+//         req.body.password,
+//         credential.password,
+//         (err, result) => {
+//           result == true
+//         }
+//       )
+//     ) {
+//       res.send('success')
+//     } else {
+//       res.send('Faild')
+//     }
+//   } catch (err) {
+//     res.status(500).json({ message: err.message })
+//   }
+// }
+// module.exports = {
+//   check_credential_user,
+// }

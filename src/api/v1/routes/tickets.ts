@@ -1,6 +1,6 @@
 import express from 'express'
 export var router = express.Router()
-import controller_tickets from '../controllers/tickets-controller'
+import * as controller_tickets from '../controllers/tickets-controller'
 
 // Getting all
 router.get('/', controller_tickets.get_all_tickets)

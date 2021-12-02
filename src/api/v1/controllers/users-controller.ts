@@ -1,5 +1,5 @@
-import Users from '../models/users-model'
-const get_all_users = async (req, res) => {
+import { Users } from '../models/users-model'
+export const get_all_users = async (req, res) => {
   try {
     const users = await Users.find()
     res.json(users)
@@ -8,7 +8,7 @@ const get_all_users = async (req, res) => {
   }
 }
 
-const get_one_user = async (req, res) => {
+export const get_one_user = async (req, res) => {
   try {
     const users = await Users.findById(req.params.id)
     res.json(users)
@@ -32,7 +32,7 @@ const get_one_user = async (req, res) => {
 //   }
 // }
 
-const update_one_user = async (req, res) => {
+export const update_one_user = async (req, res) => {
   try {
     // const checkingID = await new checkId().getId(req.params.id)
     // if (checkingID == null) {
@@ -54,7 +54,7 @@ const update_one_user = async (req, res) => {
   }
 }
 
-const delete_one_user = async (req, res) => {
+export const delete_one_user = async (req, res) => {
   try {
     // const checkingID = await new checkId().getId(req.params.id)
     // if (checkingID == null) {
@@ -84,10 +84,10 @@ const delete_one_user = async (req, res) => {
 //   }
 // }
 
-module.exports = {
-  get_all_users,
-  get_one_user,
-  // create_one_user,
-  update_one_user,
-  delete_one_user,
-}
+// module.exports = {
+//   get_all_users,
+//   get_one_user,
+//   // create_one_user,
+//   update_one_user,
+//   delete_one_user,
+// }

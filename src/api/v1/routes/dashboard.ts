@@ -1,6 +1,6 @@
 import express from 'express'
 export var router = express.Router()
-import controller_dashboard from '../controllers/dashboard-controller'
+import * as controller_dashboard from '../controllers/dashboard-controller'
 // Getting all
 router.get('/', controller_dashboard.get_dashboard)
 

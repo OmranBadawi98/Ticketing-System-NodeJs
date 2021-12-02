@@ -1,8 +1,8 @@
 import { Itickets } from './../interfaces/interfaces'
-import mongooseTicket from 'mongoose'
+import mongoose from 'mongoose'
 import { model, Model } from 'mongoose'
 
-const ticketsSchema = new mongooseTicket.Schema({
+const ticketsSchema = new mongoose.Schema({
   issue: {
     type: String,
     required: true,
@@ -26,5 +26,6 @@ const ticketsSchema = new mongooseTicket.Schema({
   },
 })
 
-const Ticket: Model<Itickets> = model('Tickets', ticketsSchema)
-module.exports = Ticket
+// const Ticket: Model<Itickets> = model('Tickets', ticketsSchema)
+// module.exports = Ticket
+export var Tickets = mongoose.model<Itickets>('Tickets', ticketsSchema)

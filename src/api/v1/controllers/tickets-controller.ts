@@ -1,5 +1,5 @@
-import Tickets from '../models/tickets-model'
-const get_all_tickets = async (req, res) => {
+import { Tickets } from '../models/tickets-model'
+export const get_all_tickets = async (req, res) => {
   try {
     const tickets = await Tickets.find()
     res.json(tickets)
@@ -8,7 +8,7 @@ const get_all_tickets = async (req, res) => {
   }
 }
 
-const get_one_ticket = async (req, res) => {
+export const get_one_ticket = async (req, res) => {
   try {
     const tickets = await Tickets.findById(req.params.id)
     res.json(tickets)
@@ -17,7 +17,7 @@ const get_one_ticket = async (req, res) => {
   }
 }
 
-const create_one_ticket = async (req, res) => {
+export const create_one_ticket = async (req, res) => {
   const tickets = new Tickets({
     issue: req.body.issue,
     from: req.body.from,
@@ -33,7 +33,7 @@ const create_one_ticket = async (req, res) => {
   }
 }
 
-const update_one_ticket = async (req, res) => {
+export const update_one_ticket = async (req, res) => {
   try {
     // const checkingID = await new checkId().getId(req.params.id)
     // if (checkingID == null) {
@@ -56,7 +56,7 @@ const update_one_ticket = async (req, res) => {
   }
 }
 
-const delete_one_ticket = async (req, res) => {
+export const delete_one_ticket = async (req, res) => {
   try {
     // const checkingID = await new checkId().getId(req.params.id)
     // if (checkingID == null) {
@@ -86,10 +86,10 @@ const delete_one_ticket = async (req, res) => {
 //   }
 // }
 
-module.exports = {
-  get_all_tickets,
-  get_one_ticket,
-  create_one_ticket,
-  update_one_ticket,
-  delete_one_ticket,
-}
+// module.exports = {
+//   get_all_tickets,
+//   get_one_ticket,
+//   create_one_ticket,
+//   update_one_ticket,
+//   delete_one_ticket,
+// }

@@ -7,7 +7,7 @@ import logger from 'morgan'
 import bodyParser from 'body-parser'
 import { registerRoute } from './config/router/routers'
 // Connect To DB
-import connectDB from './config/mongodb/connectdb'
+import { connectDB } from './config/mongodb/connectdb'
 
 const app = express()
 

@@ -1,6 +1,6 @@
 import express from 'express'
 export var router = express.Router()
-import { controller_branches } from '../controllers/branches-controller'
+import * as controller_branches from '../controllers/branches-controller'
 // const controller_branches = require('../controllers/branches-controller')
 // Getting all
 router.get('/', controller_branches.get_all_branches)

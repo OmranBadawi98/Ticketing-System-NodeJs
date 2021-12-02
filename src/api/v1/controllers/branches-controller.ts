@@ -1,9 +1,9 @@
 import { Ibranches } from './../interfaces/interfaces'
-import Branches from '../models/branches-model'
+import { Branches } from '../models/branches-model'
 import { errorGetIdException } from './errorHandling'
 
 // GET All Branches
-const get_all_branches = async (req, res) => {
+export const get_all_branches = async (req, res) => {
   try {
     const branches = await Branches.find()
     res.json(branches)
@@ -13,7 +13,7 @@ const get_all_branches = async (req, res) => {
 }
 
 // GET One Branche
-const get_one_branche = async (req, res) => {
+export const get_one_branche = async (req, res) => {
   try {
     const checkingID = await new checkId().getId(req.params.id)
     if (checkingID == null) {
@@ -27,7 +27,7 @@ const get_one_branche = async (req, res) => {
 }
 
 // CREATE One Branche
-const create_one_branche = async (req, res) => {
+export const create_one_branche = async (req, res) => {
   const branche = req.body as Ibranches
   const branches = new Branches({
     name: branche.name,
@@ -49,7 +49,7 @@ const create_one_branche = async (req, res) => {
 }
 
 // UPDATE One Branche
-const update_one_branche = async (req, res) => {
+export const update_one_branche = async (req, res) => {
   try {
     const checkingID = await new checkId().getId(req.params.id)
     if (checkingID == null) {
@@ -88,7 +88,7 @@ const update_one_branche = async (req, res) => {
 }
 
 // DELETE One Branche
-const delete_one_branche = async (req, res) => {
+export const delete_one_branche = async (req, res) => {
   try {
     const checkingID = await new checkId().getId(req.params.id)
     if (checkingID == null) {
@@ -123,12 +123,4 @@ class checkId {
     }
     return branche
   }
-}
-
-module.exports = {
-  get_all_branches,
-  get_one_branche,
-  create_one_branche,
-  update_one_branche,
-  delete_one_branche,
 }

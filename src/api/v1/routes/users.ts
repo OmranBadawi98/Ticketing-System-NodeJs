@@ -1,6 +1,6 @@
 import express from 'express'
 export var router = express.Router()
-import controller_users from '../controllers/users-controller'
+import * as controller_users from '../controllers/users-controller'
 
 // Getting all
 router.get('/', controller_users.get_all_users)
