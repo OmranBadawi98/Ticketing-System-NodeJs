@@ -1,6 +1,8 @@
-/* GET register page. */
-// router.get('/', (req, res, next) => {
-//   res.send('Welcome To Register')
-// })
+var express = require('express')
+var router = express.Router()
+const controller_Register = require('../controllers/register-controller')
 
-// module.exports = router
+// Create New User
+router.post('/', controller_Register.create_newUser)
+
+module.exports = router

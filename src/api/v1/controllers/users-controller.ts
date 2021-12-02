@@ -1,5 +1,4 @@
 const Users = require('../models/users-model')
-import bcrypt from 'bcrypt'
 
 const get_all_users = async (req, res) => {
   try {
@@ -19,20 +18,20 @@ const get_one_user = async (req, res) => {
   }
 }
 
-const create_one_user = async (req, res) => {
-  try {
-    const hashedPassword = await bcrypt.hash(req.body.password, 10)
+// const create_one_user = async (req, res) => {
+//   try {
+//     const hashedPassword = await bcrypt.hash(req.body.password, 10)
 
-    const users = new Users({
-      name: req.body.name,
-      password: hashedPassword,
-    })
-    const newUser = await users.save()
-    res.status(201).json(newUser)
-  } catch (err) {
-    res.status(400).json({ message: err.message })
-  }
-}
+//     const users = new Users({
+//       name: req.body.name,
+//       password: hashedPassword,
+//     })
+//     const newUser = await users.save()
+//     res.status(201).json(newUser)
+//   } catch (err) {
+//     res.status(400).json({ message: err.message })
+//   }
+// }
 
 const update_one_user = async (req, res) => {
   try {
@@ -89,7 +88,7 @@ const delete_one_user = async (req, res) => {
 module.exports = {
   get_all_users,
   get_one_user,
-  create_one_user,
+  // create_one_user,
   update_one_user,
   delete_one_user,
 }

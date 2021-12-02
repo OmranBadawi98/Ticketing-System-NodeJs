@@ -11,12 +11,12 @@ import bcrypt from 'bcrypt'
 //   }
 // }
 
-// Post One User To Check Credential in DB
+// Check Credential User in DB
 const check_credential_user = async (req, res) => {
   try {
     Users.find({ name: req.body.name })
       .exec()
-      .then((users) => {
+      .then(async (users) => {
         if (users.length < 1) {
           return res.status(404)
         }
@@ -36,43 +36,43 @@ const check_credential_user = async (req, res) => {
   }
 
   //--------------------------
-  const credential = Users.find({
-    name: req.body.name,
-  })
-  if (credential == null) {
-    return res.status(400).send('Cannot Find User')
-  }
-  try {
-    const passwordMatch = await bcrypt.compare(
-      req.body.password,
-      credential.password,
-      (err) => {
-        console.log('whats up')
-        console.log(req.body.password)
-        console.log(credential.password)
-      }
-    )
-    if (passwordMatch) {
-      res.send('success')
-    } else {
-      res.send('Faild')
-    }
-    if (
-      await bcrypt.compare(
-        req.body.password,
-        credential.password,
-        (err, result) => {
-          result == true
-        }
-      )
-    ) {
-      res.send('success')
-    } else {
-      res.send('Faild')
-    }
-  } catch (err) {
-    res.status(500).json({ message: err.message })
-  }
+  // const credential = Users.find({
+  //   name: req.body.name,
+  // })
+  // if (credential == null) {
+  //   return res.status(400).send('Cannot Find User')
+  // }
+  // try {
+  //   const passwordMatch = await bcrypt.compare(
+  //     req.body.password,
+  //     credential.password,
+  //     (err) => {
+  //       console.log('whats up')
+  //       console.log(req.body.password)
+  //       console.log(credential.password)
+  //     }
+  //   )
+  //   if (passwordMatch) {
+  //     res.send('success')
+  //   } else {
+  //     res.send('Faild')
+  //   }
+  //   if (
+  //     await bcrypt.compare(
+  //       req.body.password,
+  //       credential.password,
+  //       (err, result) => {
+  //         result == true
+  //       }
+  //     )
+  //   ) {
+  //     res.send('success')
+  //   } else {
+  //     res.send('Faild')
+  //   }
+  // } catch (err) {
+  //   res.status(500).json({ message: err.message })
+  // }
 }
 
 module.exports = {
